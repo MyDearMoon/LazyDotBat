@@ -52,7 +52,7 @@ reg add "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\GameDVR" /v AppCaptureEn
 reg add "HKCU\System\GameConfigStore" /v GameDVR_Enabled /t REG_DWORD /d 0 /f >nul
 echo %GREEN%    Done.%RESET%
 
-echo %CYAN%[*] Setting GPU to prefer maximum performance...%RESET%
+echo %CYAN%[*] Enabling hardware-accelerated GPU scheduling (takes effect after reboot)...%RESET%
 reg add "HKLM\SYSTEM\CurrentControlSet\Control\GraphicsDrivers" /v HwSchMode /t REG_DWORD /d 2 /f >nul
 echo %GREEN%    Done.%RESET%
 

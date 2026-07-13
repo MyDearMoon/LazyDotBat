@@ -21,11 +21,14 @@ Action scripts for cleaning, optimizing, and fixing your system.
 |---|---|
 | `disk_cleaner.bat` | Remove junk files, browser cache, temp folders, and more |
 | `ram_flush.bat` | Purge standby memory list to actually free RAM |
-| `network_boost.bat` | Flush DNS, reset network stack, and switch DNS provider |
+| `network_boost.bat` | Flush DNS, reset network stack, switch DNS provider or revert to DHCP |
 | `boost_for_gaming.bat` | Optimize your PC for gaming, with a restore option |
 | `disable_windows_junk.bat` | Temporarily disable Windows bloatware and telemetry |
 | `gpu_reset.bat` | Restart your GPU driver to fix display issues |
 | `restart_audio.bat` | Restart the Windows audio service to fix sound issues |
+| `printer_fix.bat` | Restart the print spooler and clear stuck print jobs |
+| `lab_reset.bat` | Prep a shared PC for the next user: clear sessions, logins, temp files |
+| `peripheral_reset.bat` | Restart keyboard, mouse, and Bluetooth drivers to fix input issues |
 
 ### `info/`
 Read-only scripts that display system information.

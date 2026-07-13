@@ -25,7 +25,8 @@ Purges the standby memory list to actually free RAM.
 Fixes common network issues and optionally improves DNS speed.
 - Flushes DNS cache
 - Resets Winsock and TCP/IP stack
-- Lets you switch to Cloudflare (1.1.1.1) or Google (8.8.8.8) DNS
+- Lets you switch to Cloudflare (1.1.1.1) or Google (8.8.8.8) DNS, or revert to automatic (DHCP)
+- Applies the DNS change to every active adapter
 
 ---
 
@@ -61,3 +62,31 @@ Restarts your GPU driver without rebooting.
 Restarts the Windows audio service to fix sound issues.
 - Force-kills the audio process
 - Restarts both audio services cleanly
+
+---
+
+### `printer_fix.bat`
+Fixes stuck printers by resetting the print spooler.
+- Stops the print spooler service
+- Deletes all stuck print jobs from the queue
+- Restarts the spooler and lists installed printers with their status
+- Optional: print a test page on the default printer
+
+---
+
+### `lab_reset.bat`
+Preps a shared PC for the next user (classroom / computer lab).
+- Closes all open browsers
+- Clears browser sessions, cookies, history, and saved logins (Chrome, Edge, Firefox, Brave, Opera, Vivaldi)
+- Clears temp folders, recent files list, clipboard, and Recycle Bin
+- Flushes DNS cache
+- Optional: clear the Downloads folder and saved network credentials
+
+---
+
+### `peripheral_reset.bat`
+Restarts input device drivers to fix unresponsive peripherals without rebooting.
+- Re-scans for hardware changes
+- Restarts keyboard and mouse drivers (input may freeze for a few seconds)
+- Restarts other HID devices (touchscreens, controllers)
+- Restarts the Bluetooth and device pairing services

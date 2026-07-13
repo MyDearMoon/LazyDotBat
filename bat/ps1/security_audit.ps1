@@ -32,7 +32,7 @@ if ($av) {
     foreach ($a in $av) {
         $hex = '{0:X6}' -f $a.productState
         $code = [int]('0x' + $hex.Substring(2,2))
-        if ($code -eq 1) {
+        if ($code -band 0x10) {
             Write-Good "  $($a.displayName): ON"
         } else {
             Write-Bad "  $($a.displayName): OFF [!]"

@@ -126,7 +126,7 @@ exit /b
 
 :: ── Helpers ──────────────────────────────────────────────────────────────────
 :getfreespace
-for /f "tokens=3" %%a in ('powershell -NoProfile -Command "(Get-PSDrive C).Free / 1MB -as [int]"') do set %1=%%a
+for /f %%a in ('powershell -NoProfile -Command "(Get-PSDrive C).Free / 1MB -as [int]"') do set %1=%%a
 exit /b
 
 :clearcache

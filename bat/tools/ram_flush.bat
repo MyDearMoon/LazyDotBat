@@ -85,7 +85,7 @@ set ps=%TEMP%\ramflush.ps1
     echo.
     echo # 2. Flush modified page list to disk (so pages become standby^)
     echo Write-Label "[*] Flushing modified page list..."
-    echo $cmd = 4
+    echo $cmd = 3
     echo [MemoryPurge]::NtSetSystemInformation^(80, [ref]$cmd, [System.Runtime.InteropServices.Marshal]::SizeOf^($cmd^)^) ^| Out-Null
     echo Write-Good "    Done."
     echo.

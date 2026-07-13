@@ -74,21 +74,22 @@ exit /b
 :: ── RESTORE ──────────────────────────────────────────────────────────────────
 :restore
 
+:: Restore Windows default start types (most of these are Manual, not Auto)
 echo %CYAN%[*] Restoring telemetry services...%RESET%
 sc config DiagTrack start= auto >nul & net start DiagTrack >nul 2>&1
-sc config dmwappushservice start= auto >nul & net start dmwappushservice >nul 2>&1
+sc config dmwappushservice start= demand >nul
 echo %GREEN%    Done.%RESET%
 
 echo %CYAN%[*] Restoring Xbox services...%RESET%
-sc config XblAuthManager start= auto >nul & net start XblAuthManager >nul 2>&1
-sc config XblGameSave start= auto >nul & net start XblGameSave >nul 2>&1
-sc config XboxNetApiSvc start= auto >nul & net start XboxNetApiSvc >nul 2>&1
-sc config XboxGipSvc start= auto >nul & net start XboxGipSvc >nul 2>&1
+sc config XblAuthManager start= demand >nul
+sc config XblGameSave start= demand >nul
+sc config XboxNetApiSvc start= demand >nul
+sc config XboxGipSvc start= demand >nul
 echo %GREEN%    Done.%RESET%
 
 echo %CYAN%[*] Restoring tips and feedback services...%RESET%
 sc config PcaSvc start= auto >nul & net start PcaSvc >nul 2>&1
-sc config WerSvc start= auto >nul & net start WerSvc >nul 2>&1
+sc config WerSvc start= demand >nul
 echo %GREEN%    Done.%RESET%
 
 echo %CYAN%[*] Restoring registry...%RESET%

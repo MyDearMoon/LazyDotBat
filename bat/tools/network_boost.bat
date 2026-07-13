@@ -35,31 +35,43 @@ echo.
 echo %YELLOW%Which DNS would you like to use?%RESET%
 echo %YELLOW%  [1] Cloudflare  (1.1.1.1)  - fastest%RESET%
 echo %YELLOW%  [2] Google      (8.8.8.8)  - most reliable%RESET%
-echo %YELLOW%  [3] Keep current%RESET%
+echo %YELLOW%  [3] Automatic   (DHCP)    - revert to router/network default%RESET%
+echo %YELLOW%  [4] Keep current%RESET%
 echo.
-set /p dns="%YELLOW%Choice (1/2/3): %RESET%"
+set /p dns="%YELLOW%Choice (1/2/3/4): %RESET%"
 
-if "%dns%"=="3" (
+if "%dns%"=="4" (
     echo %CYAN%    Skipped.%RESET%
     goto done
 )
+if "%dns%"=="1" goto applydns
+if "%dns%"=="2" goto applydns
+if "%dns%"=="3" goto applydns
+echo %RED%    Invalid choice, skipped.%RESET%
+goto done
 
-:: Get active network interface name
-for /f "tokens=*" %%i in ('powershell -NoProfile -Command "(Get-NetAdapter | Where-Object { $_.Status -eq 'Up' } | Select-Object -First 1).Name"') do set iface=%%i
-
-if "%dns%"=="1" (
-    netsh interface ip set dns name="%iface%" static 1.1.1.1 >nul
-    netsh interface ip add dns name="%iface%" 1.0.0.1 index=2 >nul
-    echo %GREEN%    Set to Cloudflare (1.1.1.1 / 1.0.0.1)%RESET%
-) else if "%dns%"=="2" (
-    netsh interface ip set dns name="%iface%" static 8.8.8.8 >nul
-    netsh interface ip add dns name="%iface%" 8.8.4.4 index=2 >nul
-    echo %GREEN%    Set to Google (8.8.8.8 / 8.8.4.4)%RESET%
-) else (
-    echo %RED%    Invalid choice, skipped.%RESET%
-)
+:: Apply to every active adapter, not just the first one
+:applydns
+for /f "delims=" %%i in ('powershell -NoProfile -Command "(Get-NetAdapter | Where-Object { $_.Status -eq 'Up' }).Name"') do call :setdns "%%i"
+if "%dns%"=="1" echo %GREEN%    Set to Cloudflare (1.1.1.1 / 1.0.0.1)%RESET%
+if "%dns%"=="2" echo %GREEN%    Set to Google (8.8.8.8 / 8.8.4.4)%RESET%
+if "%dns%"=="3" echo %GREEN%    Reverted to automatic (DHCP)%RESET%
 
 :done
 echo.
 echo %CYAN%=== All done - restart recommended ===%RESET%
 pause
+exit /b
+
+:: ── Helpers ──────────────────────────────────────────────────────────────────
+:setdns
+if "%dns%"=="1" (
+    netsh interface ip set dns name=%1 static 1.1.1.1 >nul
+    netsh interface ip add dns name=%1 1.0.0.1 index=2 >nul
+)
+if "%dns%"=="2" (
+    netsh interface ip set dns name=%1 static 8.8.8.8 >nul
+    netsh interface ip add dns name=%1 8.8.4.4 index=2 >nul
+)
+if "%dns%"=="3" netsh interface ip set dns name=%1 dhcp >nul
+exit /b

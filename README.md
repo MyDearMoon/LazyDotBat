@@ -20,11 +20,14 @@ bat/
 |---|---|
 | `disk_cleaner.bat` | Remove junk files, cache, and temp folders |
 | `ram_flush.bat` | Purge standby memory list to actually free RAM |
-| `network_boost.bat` | Flush DNS, reset network stack, switch DNS provider |
+| `network_boost.bat` | Flush DNS, reset network stack, switch DNS provider or revert to DHCP |
 | `boost_for_gaming.bat` | Optimize PC for gaming (with restore option) |
 | `disable_windows_junk.bat` | Disable Windows bloatware and telemetry (with restore option) |
 | `gpu_reset.bat` | Restart GPU driver to fix display issues |
 | `restart_audio.bat` | Restart audio service to fix sound issues |
+| `printer_fix.bat` | Restart print spooler and clear stuck print jobs |
+| `lab_reset.bat` | Prep a shared PC for the next user: clear sessions, logins, temp files |
+| `peripheral_reset.bat` | Restart keyboard, mouse, and Bluetooth drivers to fix input issues |
 
 ### `info/`
 | Script | What it does |
