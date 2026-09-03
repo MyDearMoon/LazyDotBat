@@ -7,6 +7,7 @@ A collection of Windows batch scripts for system maintenance, optimization, and 
 ## Structure
 
 ```
+menu.bat  Shortcut to master launcher
 tools/    Action scripts (clean, optimize, fix)
 info/     Read-only system information scripts
 ps1/      PowerShell scripts used by info/
@@ -27,7 +28,6 @@ Action scripts for cleaning, optimizing, and fixing your system.
 | `gpu_reset.bat` | Restart your GPU driver to fix display issues |
 | `restart_audio.bat` | Restart the Windows audio service to fix sound issues |
 | `printer_fix.bat` | Restart the print spooler and clear stuck print jobs |
-| `lab_reset.bat` | Prep a shared PC for the next user: clear sessions, logins, temp files |
 | `peripheral_reset.bat` | Restart keyboard, mouse, and Bluetooth drivers to fix input issues |
 
 ### `info/`

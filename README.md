@@ -4,13 +4,26 @@ A collection of Windows batch scripts for system maintenance, optimization, and 
 
 > All scripts require **Run as Administrator**.
 
+## Quick Start (Master Launcher)
+
+Run `LazyDotBat.bat` from the root of the repository (or `bat/menu.bat`):
+
+```cmd
+LazyDotBat.bat
+```
+
+The interactive menu lets you run any tool, view system diagnostics, or run the complete audit suite from a single, color-coded console.
+
 ## Structure
 
 ```
-bat/
-├── tools/    Action scripts (clean, optimize, fix)
-├── info/     Read-only system information scripts
-└── ps1/      PowerShell scripts used by info/
+LazyDotBat/
+├── LazyDotBat.bat  Master interactive launcher
+└── bat/
+    ├── menu.bat    Subfolder launcher shortcut
+    ├── tools/      Action scripts (clean, optimize, fix)
+    ├── info/       Read-only system information scripts
+    └── ps1/        PowerShell scripts used by info/
 ```
 
 ## Scripts
@@ -26,7 +39,6 @@ bat/
 | `gpu_reset.bat` | Restart GPU driver to fix display issues |
 | `restart_audio.bat` | Restart audio service to fix sound issues |
 | `printer_fix.bat` | Restart print spooler and clear stuck print jobs |
-| `lab_reset.bat` | Prep a shared PC for the next user: clear sessions, logins, temp files |
 | `peripheral_reset.bat` | Restart keyboard, mouse, and Bluetooth drivers to fix input issues |
 
 ### `info/`
@@ -41,8 +53,8 @@ bat/
 ## Usage
 
 1. Download or clone the repo
-2. Right-click any `.bat` file
-3. Select **Run as administrator**
+2. Right-click `LazyDotBat.bat` and select **Run as administrator** (or double-click to prompt for elevation)
+3. Or right-click any individual `.bat` file in `bat/tools/` or `bat/info/` and select **Run as administrator**
 
 ## Requirements
 

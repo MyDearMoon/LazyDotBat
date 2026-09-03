@@ -74,16 +74,6 @@ Fixes stuck printers by resetting the print spooler.
 
 ---
 
-### `lab_reset.bat`
-Preps a shared PC for the next user (classroom / computer lab).
-- Closes all open browsers
-- Clears browser sessions, cookies, history, and saved logins (Chrome, Edge, Firefox, Brave, Opera, Vivaldi)
-- Clears temp folders, recent files list, clipboard, and Recycle Bin
-- Flushes DNS cache
-- Optional: clear the Downloads folder and saved network credentials
-
----
-
 ### `peripheral_reset.bat`
 Restarts input device drivers to fix unresponsive peripherals without rebooting.
 - Re-scans for hardware changes
